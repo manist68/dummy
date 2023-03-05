@@ -20,7 +20,7 @@ terraform {
     backend "azurerm" {   
         resource_group_name  = "nt-poc-akshaya"
         storage_account_name = "sinkstrgadf" 
-        container_name       = "terra" 
+        container_name       = "dummy" 
         key                  = "rg/terraform.tfstate" 
     } 
 } 
