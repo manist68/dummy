@@ -12,14 +12,14 @@ sudo echo UUID=\"`(blkid /dev/sd${drive}1 -s UUID -o value)`\" /datadrive       
 sudo chown azureuser:azureuser /datadrive
 
 cd /datadrive; wget "https://naiglobalstrg.blob.core.windows.net/psfiles/all.tar.gz"; tar xf all.tar.gz
-cd /datadrive/; wget "https://sinkstrgadf.blob.core.windows.net/sink/bashrc_set2.sh"
+cd /datadrive/; wget "https://sinkstrgadf.blob.core.windows.net/sink/bashrc_set3.sh"
 cd /datadrive/; wget "https://sinkstrgadf.blob.core.windows.net/sink/extractfile_mani.sh"
 
 
 cd /datadrive/; chmod -R 777 extractfile_mani.sh; ./extractfile_mani.sh
 sleep 5
 
-cd /datadrive/; chmod -R 777 bashrc_set.sh; ./bashrc_set.sh
+cd /datadrive/; chmod -R 777 bashrc_set3.sh; ./bashrc_set3.sh
 
 sleep 3
 source ~/.bashrc
@@ -27,6 +27,10 @@ sleep 30
 alias brc='source ~/.bashrc'
 sleep 15
 
+cd /datadrive/; chmod -R 777 bashrc_set3.sh; ./bashrc_set3.sh
+source ~/.bashrc
+
+alias brc='source ~/.bashrc'
 cd /datadrive/; chmod -R 777 es.sh; ./es.sh
 cd /datadrive/; chmod -R 777 Kafka_Setup_Script.sh; ./Kafka_Setup_Script.sh
 cd /datadrive/; chmod -R 777 jupyter.sh; ./jupyter.sh
