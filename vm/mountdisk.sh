@@ -54,15 +54,15 @@ echo 'export PATH=$SPARK_HOME/bin:$SPARK_HOME/python:$PATH' >> /etc/bash.bashrc
 echo '#export PATH=$SPARK_HOME/bin' >> /etc/bash.bashrc
 echo 'export PATH=$PATH:$SPARK_HOME/bin' >> /etc/bash.bashrc
 
-cd /datadrive/; chmod -R 777 bashrc_set.sh; ./bashrc_set.sh
-cd /datadrive/; chmod -R 777 es.sh; ./es.sh
-cd /datadrive/; chmod -R 777 Kafka_Setup_Script.sh; ./Kafka_Setup_Script.sh
-cd /datadrive/; chmod -R 777 jupyter.sh; ./jupyter.sh
-cd /datadrive/; chmod -R 777 python_R_sap.sh; ./python_R_sap.sh
-cd /datadrive/; chmod -R 777 Drool_Step_2.sh; ./Drool_Step_2.sh
-cd /datadrive/; chmod -R 777 mongod.sh; ./mongod.sh
-cd /datadrive/;sudo chmod -R 777 install_hadoop.sh;yes | ./install_hadoop.sh 
-cd /datadrive/; chmod -R 777 nginx.sh; ./nginx.sh
-cd /datadrive/; chmod -R 777 monitoringAndSAS.sh; ./monitoringAndSAS.sh
+cd /datadrive/; sudo chmod -R 777 bashrc_set.sh; ./bashrc_set.sh ;cd .. ;
+cd /datadrive/; sudo chmod -R 777 es.sh; ./es.sh;cd .. ;
+cd /datadrive/; chmod -R 777 Kafka_Setup_Script.sh; ./Kafka_Setup_Script.sh;cd .. ;
+cd /datadrive/; chmod -R 777 jupyter.sh; ./jupyter.sh;cd .. ;
+cd /datadrive/; sudo chmod -R 777 python_R_sap.sh; ./python_R_sap.sh;cd .. ;
+cd /datadrive/; chmod -R 777 Drool_Step_2.sh; ./Drool_Step_2.sh;cd .. ;
+cd /datadrive/; sudo chmod -R 777 mongod.sh; ./mongod.;cd .. ;sh
+cd /datadrive/; sudo chmod -R 777 install_hadoop.sh;printf '%s\n' Y Y yes yes | ./install_hadoop.sh ;cd .. ;
+cd /datadrive/; chmod -R 777 nginx.sh; ./nginx.sh;cd .. ;
+cd /datadrive/; chmod -R 777 monitoringAndSAS.sh; ./monitoringAndSAS.sh;cd .. ;
 
 
