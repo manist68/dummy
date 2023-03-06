@@ -65,6 +65,20 @@ echo 'export PATH=$PATH:$SPARK_HOME/bin' >> /etc/bash.bashrc
 # cd /datadrive/; chmod -R 777 nginx.sh; ./nginx.sh;cd .. ;
 # cd /datadrive/; chmod -R 777 monitoringAndSAS.sh; ./monitoringAndSAS.sh;cd .. ;
 
+cd /datadrive/kafka_2.12-2.6.0; nohup ./bin/zookeeper-server-start.sh config/zookeeper.properties > logs/zookeeper.log 2>&1 &
+cd /datadrive/kafka_2.12-2.6.0; nohup ./bin/kafka-server-start.sh config/server.properties > logs/server.log 2>&1 &
+cd /datadrive/confluent-6.0.0; nohup ./bin/schema-registry-start etc/schema-registry/schema-registry.properties > logs/schema-registry.log 2>&1 &
 
-cd /datadrive/;bash es.sh;cd /datadrive/;bash Kafka_Setup_Script.sh;cd /datadrive/; bash mongod.sh
-cd /datadrive/;bsh monitoringAndSAS.sh;cd /datadrive/; bash python_R_sap.sh; cd /datadrive/; bash nginx.sh;
+sudo apt install curl -y
+
+#cd /datadrive/; tar xf mongodb-linux-x86_64-ubuntu1604-4.2.8.tgz; 
+sudo apt-get install libcurl4 php-curl -y
+sudo apt-get install libcurl3 -y
+
+cd
+sudo mkdir -p /data/db
+sudo chown -R azureuser:azureuser /data/
+cd
+cd /datadrive/mongodb-linux-x86_64-ubuntu1604-4.2.8; bin/mongod --fork --logpath ./mongo.db
+
+
