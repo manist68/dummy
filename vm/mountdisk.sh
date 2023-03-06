@@ -66,4 +66,5 @@ echo 'export PATH=$PATH:$SPARK_HOME/bin' >> /etc/bash.bashrc
 # cd /datadrive/; chmod -R 777 monitoringAndSAS.sh; ./monitoringAndSAS.sh;cd .. ;
 
 
-cd /datadrive/;bash es.sh;cd /datadrive/;sudo bash Kafka_Setup_Script.sh;cd /datadrive/; bash mongod.sh
+cd /datadrive/;bash es.sh;cd /datadrive/;bash Kafka_Setup_Script.sh;cd /datadrive/; bash mongod.sh
+cd /datadrive/;bsh monitoringAndSAS.sh;cd /datadrive/; bash python_R_sap.sh; cd /datadrive/; bash nginx.sh;
