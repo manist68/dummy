@@ -170,7 +170,7 @@ resource "azurerm_virtual_machine_extension" "mount_Disk" {
 
   settings = <<SETTINGS
     {
-        "script": "${filebase64("mountdisk.sh")}"
+        "script": "${filebase64("mount2.sh")}"
     }
 SETTINGS
   depends_on = [
