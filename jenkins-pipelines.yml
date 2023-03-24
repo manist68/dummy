@@ -1,0 +1,65 @@
+def arr = [ "rg","nt","vm"]
+
+
+pipeline {
+    agent { node { label 'Master_Machine'} }
+    environment {
+    MY_CRED = credentials('azuremssecret')
+  }
+
+    stages {
+        
+        
+        
+        stage('Read') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manist68/dummy/']]])
+            }
+        }
+    
+    
+   
+    
+     stage("create vm"){
+            steps{
+                
+                withCredentials([azureServicePrincipal(credentialsId: "azuremssecret",
+                subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
+                clientIdVariable: 'ARM_CLIENT_ID',
+                clientSecretVariable: 'ARM_CLIENT_SECRET',
+                tenantIdVariable: 'ARM_TENANT_ID')]) {
+                    
+                    
+                    bat "terraform -version"
+                    
+                       
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/manist68/cloud/']]])
+                        arr.each{
+                        println "creating ${it}"
+                        def TF_EXEC_PATH = "${WORKSPACE}/"+ "${it}"
+                        TF_EXEC_PATH = TF_EXEC_PATH.replace("/", "\\")
+                        def TF_INIT = "terraform init"
+                        def TF_PLAN = "terraform plan"
+                        def TF_INIR = "terraform init -reconfigure"
+                        def TF_ACTION = "terraform ${action} -auto-approve"
+                        
+                     
+                         bat """
+                                    cd ${TF_EXEC_PATH}
+                                    ${TF_INIR}
+                                    ${TF_PLAN}
+                                    ${TF_ACTION}
+                                               
+                          """
+                          
+            
+                        }
+                    }
+                }
+            }
+        } 
+        
+    }
+    
+}        
